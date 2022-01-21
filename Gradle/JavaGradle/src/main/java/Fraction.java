@@ -16,11 +16,6 @@ public class Fraction {
    public Fraction(){
       numerator = denominator = 0;
    }
-   
-   public Fraction(int numerator, int denominator) {
-      this.numerator = numerator;
-      this.denominator = denominator;
-   }
 
    public void print() {
     System.out.print(numerator + "/" + denominator );
@@ -43,22 +38,23 @@ public class Fraction {
    }
 
    public static void main (String args[]) {
-      try {
-         // create a new instance
-         // Fraction *frac = [[Fraction alloc] init];
-         Fraction frac = new Fraction();
-
-         // set the values
-         frac.setNumerator(1);
-         frac.setDenominator(3);
-
-         // print it
-         System.out.print("The fraction is: ");
-         frac.print();
-         System.out.println("");
-
-      }catch(Exception e) {
-         e.printStackTrace();
+     if (args.length == 2) {
+        int numerator = 0;
+        int denominator = 0;
+        try {
+          numerator = Integer.parseInt(args[0]);
+          denominator = Integer.parseInt(args[1]);
+        } catch (Exception e) {
+          System.out.println("Arguments: " + args[0] + ", " + args[1] + " must be integers.");
+          System.exit(1);
+        }
+        Fraction fraction = new Fraction();
+        fraction.setNumerator(numerator);
+        fraction.setDenominator(denominator);
+        System.out.println("The fraction is: " + fraction.print);
+      } else {
+          System.out.println("Exactly 2 arguments should be provided.");
+      }
       }
    }
 }
